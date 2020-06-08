@@ -1,0 +1,26 @@
+:host {
+    margin-top: -1em;
+}
+
+.container {
+    margin-top: 2.5%;
+}
+
+.mat-card {
+    margin: 5%;
+    --webkit-box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.75);
+}
+
+.mat-card-image {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    width: calc(100% + 32px);
+    height: 250px;
+    margin: auto;
+    margin-top: -16px;
+    margin-right: -16px;
+    margin-left: -16px;
+    margin-bottom: 1.2em;
+}
