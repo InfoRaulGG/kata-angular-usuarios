@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _ac: ActivatedRoute) { }
+
+  usuarios: User[];
 
   ngOnInit() {
+    this.usuarios = this._ac.snapshot.data.user;
   }
+
+
 
 }

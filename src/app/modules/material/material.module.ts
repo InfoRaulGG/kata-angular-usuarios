@@ -8,6 +8,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input'; 
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatDividerModule} from '@angular/material/divider'; 
+import {MatExpansionModule} from '@angular/material/expansion'; 
+import {MatMenuModule} from '@angular/material/menu'; 
 
 
 @NgModule({
@@ -19,8 +21,12 @@ import {MatDividerModule} from '@angular/material/divider';
     MatCardModule,
     MatPaginatorModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatExpansionModule,
+    MatMenuModule
   ],
-  exports: [MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatPaginatorModule, MatInputModule, MatFormFieldModule, MatDividerModule]
+  // tslint:disable-next-line: max-line-length
+  exports: [MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, 
+    MatPaginatorModule, MatInputModule, MatFormFieldModule, MatDividerModule, MatExpansionModule, MatMenuModule]
 })
 export class MaterialModule { }

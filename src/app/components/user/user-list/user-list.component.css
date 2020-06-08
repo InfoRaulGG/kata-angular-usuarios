@@ -1,0 +1,23 @@
+.mat-card {
+    margin-bottom: 2%;
+}
+
+.mat-card-header-text {
+    margin: 0;
+}
+
+.mat-card-header-text {
+    margin: 0;
+}
+
+.mat-menu-trigger {
+    display: block;
+    text-align: right;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.mat-card-content {
+    padding-top: 5%;
+}
