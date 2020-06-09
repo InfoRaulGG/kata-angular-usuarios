@@ -1,4 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-snack-bar-container.notif-success {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-weight: bold;
+    text-align: right;
+    border-left: 8px solid;
+    border-left-color: currentcolor;
+    border-color: green;
+}
+
+.mat-snack-bar-container.notif-bad {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-weight: bold;
+    text-align: right;
+    border-left: 8px solid;
+    border-left-color: currentcolor;
+    border-color: red;
+}
+
+.card-sombra {
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75) !important;
+    -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75) !important;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75) !important;
+}
+
+.card-gris {
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75) !important;
+    -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75) !important;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75) !important;
+    background-color: rgba(245, 240, 245, 0.4);
+}

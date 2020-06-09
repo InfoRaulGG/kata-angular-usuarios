@@ -11,9 +11,12 @@ import { User } from '../models/User';
 
 export class UserResolver implements Resolve<Observable<User>> {
 
-    constructor(private _api: ApiServiceService){}
+    // tslint:disable-next-line: variable-name
+    constructor(private _api: ApiServiceService) {
 
-    resolve() { 
+    }
+
+    resolve() {
         return this._api.getAllUser().pipe(
             delay(750)
         );

@@ -1,4 +1,25 @@
-<mat-card *ngFor="let user of users">
+<div class="options-search">
+
+    <mat-card class="card-sombra">
+        <h5>Opciones de busqueda:</h5>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>
+                <mat-icon>search</mat-icon>
+                Buscar
+            </mat-label>
+            <input matInput type="search" [formControl]="search" placeholder="Ex. Jhon">
+        </mat-form-field>
+
+        <mat-paginator [length]="users.length" [pageSize]="pageSize" [pageSizeOptions]="pageOptions" (page)="handlePage($event)">
+        </mat-paginator>
+    </mat-card>
+
+</div>
+
+<mat-divider></mat-divider>
+
+<mat-card class="card-gris" *ngFor="let user of users | paginate:pageSize:pageNumber">
 
     <mat-card-header>
 
@@ -28,8 +49,20 @@
     <mat-divider></mat-divider>
 
     <mat-card-content>
-        <p>Email: {{user.email}}</p>
-        <p>Username: {{user.username}}</p>
+        <div class="row">
+            <div class="col-3">
+                <mat-icon style="font-size:5em; position:relative; bottom: 10px; left: 0;">account_circle</mat-icon>
+            </div>
+            <div class="col-9">
+                <p> <span class="bold">Email:</span> {{user.email}}</p>
+                <p> <span class="bold">Username:</span> {{user.username}}</p>
+            </div>
+        </div>
     </mat-card-content>
 
 </mat-card>
+
+<div *ngIf="noEncontrados" style="text-align: center;padding-top: 2em;">
+    <h2>No es la llama que buscas!</h2>
+    <img src="../../../../assets/img/llama.png" style="width: 200px;" alt="">
+</div>

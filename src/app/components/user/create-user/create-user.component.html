@@ -1,9 +1,9 @@
-<mat-card>
+<mat-card class="card-sombra">
     <mat-card-header>
         <mat-card-title>Registrar nuevo usuario:</mat-card-title>
     </mat-card-header>
 
-    <form class="form-create-user">
+    <form class="form-create-user" [formGroup]="createForm" (ngSubmit)="onSubmit(createForm)">
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -16,19 +16,35 @@
             </mat-expansion-panel-header>
 
             <mat-form-field class="example-full-width">
-                <mat-label>Name</mat-label>
-                <input matInput>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" id="name">
             </mat-form-field>
+
+            <mat-error *ngIf="createForm.get('name').hasError('required')  && (createForm.get('name').dirty || createForm.get('name').touched)">
+                El nombre es requerido.
+            </mat-error>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Username</mat-label>
-                <input matInput>
+                <input matInput formControlName="username">
             </mat-form-field>
+
+            <mat-error *ngIf="createForm.get('username').hasError('required')  && (createForm.get('username').dirty || createForm.get('username').touched)">
+                El nombre de usuario es requerido.
+            </mat-error>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
-                <input matInput>
+                <input matInput formControlName="email">
             </mat-form-field>
+
+            <mat-error *ngIf="createForm.get('email').hasError('required')  && (createForm.get('email').dirty || createForm.get('email').touched)">
+                El email es obligatorio.
+            </mat-error>
+
+            <mat-error *ngIf="createForm.get('email').hasError('email')  && (createForm.get('email').dirty || createForm.get('email').touched)">
+                El email introducido no es válido.
+            </mat-error>
 
         </mat-expansion-panel>
 
@@ -46,23 +62,44 @@
 
             <mat-form-field class="example-full-width">
                 <mat-label>Calle</mat-label>
-                <input matInput>
+                <input matInput formControlName="street">
             </mat-form-field>
+
+            <mat-error *ngIf="createForm.get('street').hasError('required')  && (createForm.get('street').dirty || createForm.get('street').touched)">
+                La calle es obligatoria, indique N/A en caso de no disponer.
+            </mat-error>
+
 
             <mat-form-field class="example-full-width">
                 <mat-label>Suite</mat-label>
-                <input matInput>
+                <input matInput formControlName="suite">
             </mat-form-field>
+
+            <mat-error *ngIf="createForm.get('suite').hasError('required')  && (createForm.get('suite').dirty || createForm.get('suite').touched)">
+                La suite es obligatoria, indique N/A en caso de no disponer.
+            </mat-error>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Ciudad</mat-label>
-                <input matInput>
+                <input matInput formControlName="city">
             </mat-form-field>
+
+            <mat-error *ngIf="createForm.get('city').hasError('required')  && (createForm.get('city').dirty || createForm.get('city').touched)">
+                La ciudad es obligatoria.
+            </mat-error>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Codigo Postal</mat-label>
-                <input matInput>
+                <input matInput type="number" formControlName="zipCode">
             </mat-form-field>
+
+            <mat-error *ngIf="createForm.get('zipCode').hasError('required')  && (createForm.get('zipCode').dirty || createForm.get('zipCode').touched)">
+                El código postal es obligatorio.
+            </mat-error>
+
+            <mat-error *ngIf="createForm.get('zipCode').hasError('pattern')  && (createForm.get('zipCode').dirty || createForm.get('zipCode').touched)">
+                El código postal no es válido
+            </mat-error>
 
         </mat-expansion-panel>
 
@@ -79,17 +116,48 @@
             </mat-expansion-panel-header>
 
             <mat-form-field class="example-full-width">
-                <mat-label>Telefono</mat-label>
-                <input matInput>
+                <mat-label>Teléfono</mat-label>
+                <input matInput type="number" formControlName="phone">
             </mat-form-field>
+
+            <mat-error *ngIf="createForm.get('phone').hasError('required')  && (createForm.get('phone').dirty || createForm.get('phone').touched)">
+                El teléfono es obligatorio.
+            </mat-error>
+
+            <mat-error *ngIf="createForm.get('phone').hasError('pattern')  && (createForm.get('phone').dirty || createForm.get('phone').touched)">
+                El teléfono no es válido
+            </mat-error>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Sitio Web</mat-label>
-                <input matInput>
+                <input matInput formControlName="website">
             </mat-form-field>
 
-        </mat-expansion-panel>
+            <mat-error *ngIf="createForm.get('website').hasError('required')  && (createForm.get('website').dirty || createForm.get('website').touched)">
+                El sitio web es obligatorio, indique N/A en caso de no disponer.
+            </mat-error>
 
+        </mat-expansion-panel>
+        <div class="button-panel row">
+            <div class="col-lg-3 col-12">
+                <button mat-raised-button color="primary" type="submit" (click)="loader = true" [disabled]="!createForm.valid || loader">
+                    <div class="loader-button" id="loader-panel" *ngIf="loader">
+                        <mat-progress-spinner
+                            class="load"
+                            [color]="'primary'"
+                            [mode]="'indeterminate'"
+                            [value]="100"
+                            [diameter]="20">
+                        </mat-progress-spinner>
+                    </div>
+                    <span id="textPanel" *ngIf="!loader">Registrar</span>
+                </button>
+            </div>
+            <div class="col-lg-3 col-12">
+                <button mat-stroked-button color="primary" type="button" (click)="limpiarCampos()">Limpiar</button>
+            </div>
+
+        </div>
     </form>
 
 
