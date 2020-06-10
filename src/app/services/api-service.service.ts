@@ -18,8 +18,8 @@ export class ApiServiceService {
     return this._http.get<User[]>(this.rootUrl + 'users');
   }
 
-  getUserById(id: number): Observable<User[]>  {
-    return this._http.get<User[]>(this.rootUrl + 'users/' + id);
+  getUserById(id: number): Observable<User>  {
+    return this._http.get<User>(this.rootUrl + 'users/' + id);
   }
 
   createUser(user: User): Observable<User> {

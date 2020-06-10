@@ -1,10 +1,13 @@
-<app-page-header [title]="'Pagina de katas para pruebas con Angular'" [message]="'Colgaremos aquí todas las Katas relevantes con Usuarios'">
+<app-page-header [title]="'Gestion de usuarios en la plataforma'" [message]="'Realize dentro de esta pantalla todo lo necesario referente a usuarios, visualizar, editar, crear y borrar.'">
 </app-page-header>
 
 <div class="container">
+    <div class="row" *ngIf="mostrarMenu">
+        <p>IS WORKING</p>
+    </div>
     <div class="row">
         <div class="col-lg-6 col-12">
-            <app-user-list [users]="usuarios"></app-user-list>
+            <app-user-list></app-user-list>
         </div>
         <div class="col-lg-6 col-12">
             <router-outlet></router-outlet>

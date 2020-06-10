@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
 import { User } from '../../../models/User';
 import { ApiServiceService } from '../../../services/api-service.service';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { config } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataService } from '../../../services/data.service';
+import { notRepeatUsername } from '../../../validators/repeat-username.directive';
 
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css']
 })
+
+
 export class CreateUserComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private _api : ApiServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private fb: FormBuilder, private _api : ApiServiceService, 
+    private _snackBar: MatSnackBar, private _data: DataService) { }
 
   createForm: FormGroup;
   user: User;
@@ -41,15 +45,17 @@ export class CreateUserComponent implements OnInit {
     }
 
     this.user = new User(form.value);
-    console.log(JSON.stringify(this.user));
 
     this._api.createUser(this.user).subscribe(response => {
       this._snackBar.open('Usuario creado satisfactoriamente', '', {
         duration: 10000,
         panelClass: ['notif-success']
       });
+
+      this._data.users.push(this.user);
       this.limpiarCampos();
       this.loader = false;
+
     }, error => {
       console.log(error);
       this._snackBar.open(error.message, '', {
@@ -63,7 +69,7 @@ export class CreateUserComponent implements OnInit {
   inicializarForm() {
     this.createForm = this.fb.group({
       name: ['', Validators.required],
-      username: ['', Validators.required],
+      username: ['', { validators: [Validators.required, notRepeatUsername(this._data.users)], updateOn: 'blur' }],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       street: ['', Validators.required],
       suite: ['', Validators.required],
@@ -73,25 +79,4 @@ export class CreateUserComponent implements OnInit {
       website: ['', Validators.required],
     });
   }
-
-
-  mostrarLoader(mostrar: boolean) {
-
-    if (mostrar){
-      debugger;
-      document.querySelector('#loader-panel').classList.add('show');
-      document.querySelector('#loader-panel').classList.remove('hide');
-      
-      document.querySelector('#textPanel').classList.add('hide');
-      document.querySelector('#textPanel').classList.remove('show');
-    } else{
-
-      document.querySelector('#loader-panel').classList.add('hide');
-      document.querySelector('#loader-panel').classList.remove('show');
-      
-      document.querySelector('#textPanel').classList.add('show');
-      document.querySelector('#textPanel').classList.remove('hide');
-    }
-  }
-
 }

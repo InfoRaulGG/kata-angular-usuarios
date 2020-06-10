@@ -1,0 +1,44 @@
+<mat-card class="card-sombra">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <mat-icon style="font-size: 40px;">account_circle</mat-icon>
+        </div>
+        <mat-card-title>{{ selectUser?.name }}</mat-card-title>
+        <mat-card-subtitle>{{ selectUser?.username }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem" class="bold">Biografia</mat-list-item>
+            <hr style="margin-top: 0;">
+            <p class="ml-3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mi mauris, pharetra at purus eget, dapibus lacinia dolor. Duis quis tristique mi. Nam sed mauris id nisl bibendum semper vel a ligula. Fusce diam diam, commodo consectetur ultrices vel,
+                maximus ut augue. Nunc cursus ornare dui vitae condimentum. Vivamus dolor dolor, scelerisque eget dolor eu, vehicula porttitor lectus. Proin nunc sapien, pulvinar sit amet bibendum eget, tempor vitae leo. Fusce elementum risus vel gravida
+                tristique. Aenean pellentesque viverra molestie. Duis pulvinar pulvinar suscipit. Sed accumsan faucibus mauris nec accumsan. Fusce scelerisque tempus sem quis porttitor. Mauris viverra dignissim diam at dignissim. Interdum et malesuada
+                fames ac ante ipsum primis in faucibus.
+            </p>
+            <mat-list-item role="listitem" class="bold">Datos personales</mat-list-item>
+            <hr style="margin-top: 0;">
+            <div class="ml-3">
+                <div><span class="bold">Email: </span> {{selectUser?.email}}</div>
+                <div><span class="bold">Telefono: </span> {{selectUser?.phone}}</div>
+                <div><span class="bold">Sitio web: </span> {{selectUser?.website}}</div>
+            </div>
+            <mat-list-item role="listitem" class="bold">Datos de contacto</mat-list-item>
+            <hr style="margin-top: 0;">
+            <div class="ml-3">
+                <div><span class="bold">Calle: </span> {{selectUser?.address?.street}}</div>
+                <div><span class="bold">Suite: </span> {{selectUser?.address?.suite}}</div>
+                <div><span class="bold">Ciudad: </span> {{selectUser?.address?.city}}</div>
+                <div><span class="bold">Codigo postal: </span> {{selectUser?.address?.zipcode}}</div>
+            </div>
+            <mat-list-item role="listitem" class="bold">Datos empresariales</mat-list-item>
+            <hr style="margin-top: 0;">
+            <div class="ml-3">
+                <div><span class="bold">Nombre fiscal: </span> {{selectUser?.company?.name}}</div>
+                <div><span class="bold">Frase comercial: </span> {{selectUser?.company?.catchPhrase}}</div>
+                <div><span class="bold">Sector: </span> {{selectUser?.company?.bs}}</div>
+            </div>
+        </mat-list>
+
+    </mat-card-content>
+</mat-card>

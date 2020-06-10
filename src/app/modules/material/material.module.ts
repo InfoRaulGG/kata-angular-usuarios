@@ -12,6 +12,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -27,10 +29,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatExpansionModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatTabsModule
   ],
   // tslint:disable-next-line: max-line-length
   exports: [MatToolbarModule, MatIconModule, MatCardModule, MatButtonModule, MatSnackBarModule, MatProgressSpinnerModule,
-    MatPaginatorModule, MatInputModule, MatFormFieldModule, MatDividerModule, MatExpansionModule, MatMenuModule]
+    MatPaginatorModule, MatInputModule, MatFormFieldModule, MatDividerModule, MatExpansionModule, MatMenuModule, MatListModule,
+    MatTabsModule]
 })
 export class MaterialModule { }

@@ -33,6 +33,10 @@
                 El nombre de usuario es requerido.
             </mat-error>
 
+            <mat-error *ngIf="createForm.get('username').hasError('repeat')  && (createForm.get('username').dirty || createForm.get('username').touched)">
+                El nombre de usuario ya se encuentra registrado.
+            </mat-error>
+
             <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email">

@@ -11,7 +11,7 @@
             <input matInput type="search" [formControl]="search" placeholder="Ex. Jhon">
         </mat-form-field>
 
-        <mat-paginator [length]="users.length" [pageSize]="pageSize" [pageSizeOptions]="pageOptions" (page)="handlePage($event)">
+        <mat-paginator [length]="filterUsers.length" [pageSize]="pageSize" [pageSizeOptions]="pageOptions" (page)="handlePage($event)">
         </mat-paginator>
     </mat-card>
 
@@ -19,7 +19,7 @@
 
 <mat-divider></mat-divider>
 
-<mat-card class="card-gris" *ngFor="let user of users | paginate:pageSize:pageNumber">
+<mat-card class="card-gris" *ngFor="let user of filterUsers | paginate:pageSize:pageNumber">
 
     <mat-card-header>
 
@@ -29,15 +29,15 @@
             <mat-icon>more_vert</mat-icon>
           </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item [routerLink]="['/users/detail', user.id]">
               <mat-icon>account_circle</mat-icon>
               <span>Ver detalles</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item [routerLink]="['/users/edit', user.id]">
               <mat-icon>edit</mat-icon>
               <span>Editar</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="eliminarUsuario(user.id)">
               <mat-icon>delete</mat-icon>
               <span>Eliminar</span>
             </button>

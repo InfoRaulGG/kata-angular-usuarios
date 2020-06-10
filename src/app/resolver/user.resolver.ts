@@ -9,11 +9,10 @@ import { User } from '../models/User';
     providedIn: 'root'
 })
 
-export class UserResolver implements Resolve<Observable<User>> {
+export class UserResolver implements Resolve<Observable<User[]>> {
 
     // tslint:disable-next-line: variable-name
     constructor(private _api: ApiServiceService) {
-
     }
 
     resolve() {

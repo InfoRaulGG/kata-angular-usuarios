@@ -4,12 +4,14 @@ import { Routes, RouterModule, Router } from '@angular/router';
 import { UserComponent } from '../../components/user/user.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserResolver } from '../../resolver/user.resolver';
-import { NavbarComponent } from '../../components/shared/navbar/navbar.component';
 import { CreateUserComponent } from '../../components/user/create-user/create-user.component';
 import { MaterialModule } from '../material/material.module';
 import { UserListComponent } from '../../components/user/user-list/user-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginatePipe } from '../../pipes/paginate.pipe';
+import { RepeatUsernameDirective } from '../../validators/repeat-username.directive';
+import { UserDetailComponent } from '../../components/user/user-detail/user-detail.component';
+import { UserEditComponent } from '../../components/user/user-edit/user-edit.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,14 @@ const routes: Routes = [
       {
         path: '',
         component: CreateUserComponent
+      },
+      {
+        path: 'detail/:id',
+        component: UserDetailComponent
+      },
+      {
+        path: 'edit/:id',
+        component: UserEditComponent
       }
     ]
   },
@@ -31,7 +41,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [UserComponent, CreateUserComponent, UserListComponent, PaginatePipe],
+  declarations: [UserComponent, CreateUserComponent, UserListComponent, PaginatePipe, UserDetailComponent, UserEditComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -39,6 +49,7 @@ const routes: Routes = [
     MaterialModule,
     ReactiveFormsModule
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [RepeatUsernameDirective]
 })
 export class UserModule { }

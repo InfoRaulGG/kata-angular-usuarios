@@ -7,12 +7,13 @@ import { MaterialModule } from './modules/material/material.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { LoaderComponent } from './components/shared/loader/loader.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UserListComponent } from './components/user/user-list/user-list.component';
+import { RepeatUsernameDirective } from './validators/repeat-username.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent
+    LoaderComponent,
+    RepeatUsernameDirective
   ],
   imports: [
     BrowserModule,
