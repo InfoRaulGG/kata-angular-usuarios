@@ -10,6 +10,13 @@
     }
 }
 
+button:disabled {
+    background-color: #3f51b5 !important;
+    opacity: 0.5 !important;
+    color: white !important;
+    cursor: default;
+}
+
 .mat-form-field {
     width: 70%;
     margin: auto;
@@ -63,12 +70,4 @@
 .mat-progress-spinner svg {
     width: 20px !important;
     height: 20px !important;
-}
-
-.hide {
-    display: none !important;
-}
-
-.show {
-    display: flex !important;
 }

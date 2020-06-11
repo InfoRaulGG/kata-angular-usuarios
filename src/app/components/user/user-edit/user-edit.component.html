@@ -1,3 +1,11 @@
+<mat-card class="validate-errors" *ngIf="validateErrors.length > 0">
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let error of validateErrors">
+            Error en el campo {{ error[0] }}
+        </mat-list-item>
+    </mat-list>
+</mat-card>
+
 <mat-card class="card-sombra">
     <mat-card-header>
         <mat-card-title>Editar usuario:</mat-card-title>
@@ -5,18 +13,99 @@
 
     <mat-divider></mat-divider>
 
-    <form class="form-edit-user" [formGroup]="editForm" (ngSubmit)="true">
+    <form class="form-edit-user" [formGroup]="editForm" (ngSubmit)="onSubmit()">
         <mat-tab-group mat-align-tabs="start">
             <mat-tab label="Datos personales">
+                <div class="tab-group">
+                    <mat-form-field class="form-field">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="name" id="name" [(ngModel)]="user.name">
+                    </mat-form-field>
 
+                    <mat-form-field class="form-field">
+                        <mat-label>Nombre de usuario</mat-label>
+                        <input matInput formControlName="username" id="username" [(ngModel)]="user.username">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" id="email" [(ngModel)]="user.email">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field">
+                        <mat-label>Sitio Web</mat-label>
+                        <input matInput formControlName="website" [(ngModel)]="user.website">
+                    </mat-form-field>
+
+                </div>
             </mat-tab>
             <mat-tab label="Datos de contacto">
+                <div class="tab-group">
+                    <mat-form-field class="form-field">
+                        <mat-label>Telefono</mat-label>
+                        <input matInput formControlName="phone" id="phone" [(ngModel)]="user.phone">
+                    </mat-form-field>
 
+                    <mat-form-field class="form-field">
+                        <mat-label>Direccion</mat-label>
+                        <input matInput formControlName="street" id="street" [(ngModel)]="user.address.street">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field">
+                        <mat-label>Piso</mat-label>
+                        <input matInput formControlName="suite" id="suite" [(ngModel)]="user.address.suite">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field">
+                        <mat-label>Ciudad</mat-label>
+                        <input matInput formControlName="city" id="city" [(ngModel)]="user.address.city">
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field">
+                        <mat-label>Codigo postal</mat-label>
+                        <input matInput formControlName="zipCode" id="zipCode" [(ngModel)]="user.address.zipcode">
+                    </mat-form-field>
+
+                </div>
             </mat-tab>
             <mat-tab label="Datos empresariales">
+                <div class="tab-group">
+                    <mat-form-field class="form-field">
+                        <mat-label>Nombre empresa</mat-label>
+                        <input matInput formControlName="companyName" id="companyName" [(ngModel)]="user.company.name">
+                    </mat-form-field>
 
+                    <mat-form-field class="form-field">
+                        <mat-label>Frase comercial</mat-label>
+                        <textarea matInput formControlName="catchPhrase" id="catchPhrase" [(ngModel)]="user.company.catchPhrase"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field">
+                        <mat-label>Sector</mat-label>
+                        <textarea matInput formControlName="bs" id="bs" [(ngModel)]="user.company.bs"></textarea>
+                    </mat-form-field>
+                </div>
             </mat-tab>
         </mat-tab-group>
+
+        <div class="button-panel row">
+            <button mat-raised-button color="primary" type="submit" (click)="loader = true" [disabled]="!editForm.valid || loader" [ngClass]="{ 'padding' : loader }">
+                    <div class="loader-button" id="loader-panel" *ngIf="loader">
+                        <mat-progress-spinner
+                            class="load"
+                            [color]="'accent'"
+                            [mode]="'indeterminate'"
+                            [value]="100"
+                            [diameter]="20">
+                        </mat-progress-spinner>
+                    </div>
+                    <span id="textPanel" *ngIf="!loader">Actualizar</span>
+                </button>
+        </div>
+
+
+
+
     </form>
 
 </mat-card>

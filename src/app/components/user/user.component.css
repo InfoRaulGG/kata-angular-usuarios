@@ -1,3 +1,8 @@
 .container {
     margin-top: 3%;
 }
+
+.rowButtonMenu {
+    margin-left: 0;
+    margin-bottom: 1.5em;
+}

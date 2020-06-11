@@ -15,18 +15,47 @@ export class UserComponent implements OnInit {
   mostrarMenu: boolean = false;
 
   constructor(private _ac: ActivatedRoute, public _data: DataService, private _router: Router) { }
-  
+
   ngOnInit() {
-    this._data.users = this._ac.snapshot.data.user;
-  
+    
+    this.obtenerUsuarios();
+    
+    this.comprobarRutaMenu();
+
     this._router.events.subscribe( () => {
-      if (this._router.url !== '/users') {
-        this.mostrarMenu = true;
-      } else {
-        this.mostrarMenu = false;
-      }
+      this.comprobarRutaMenu();
+      this.scrollTop();
     });
   }
 
+  comprobarRutaMenu() {
+    if (this._router.url !== '/users') {
+      this.mostrarMenu = true;
+    } else {
+      this.mostrarMenu = false;
+    }
+  }
 
+  obtenerUsuarios() {
+    this._data.users = this._ac.snapshot.data.user;
+  }
+
+  scrollTop() {
+
+    const scrollToTop = window.setInterval(() => {
+
+      const pos = window.pageYOffset;
+
+      if (pos > 0) {
+          window.scrollTo({
+            top: pos - 300,
+            left: 0,
+            behavior: 'smooth'
+          });
+      } else {
+          window.clearInterval(scrollToTop);
+      }
+
+  }, 1);
+  }
 }

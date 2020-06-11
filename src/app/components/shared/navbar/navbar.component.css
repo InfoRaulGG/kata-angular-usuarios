@@ -30,3 +30,8 @@
     margin-right: 3%;
     font-size: 1.1em;
 }
+
+.active {
+    border-bottom: 4px solid #fff;
+    border-radius: 2px;
+}

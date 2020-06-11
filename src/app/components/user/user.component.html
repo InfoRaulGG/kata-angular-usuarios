@@ -2,8 +2,8 @@
 </app-page-header>
 
 <div class="container">
-    <div class="row" *ngIf="mostrarMenu">
-        <p>IS WORKING</p>
+    <div class="row rowButtonMenu" *ngIf="mostrarMenu">
+        <button mat-raised-button color="primary" [routerLink]="'/users'">Registrar nuevo usuario</button>
     </div>
     <div class="row">
         <div class="col-lg-6 col-12">

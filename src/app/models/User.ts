@@ -41,8 +41,6 @@ export class User implements IUser {
     public constructor(init?: User) {
         Object.assign(this, init);
     }
-
 }
-
 
 
